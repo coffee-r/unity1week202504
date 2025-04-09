@@ -32,6 +32,13 @@
       "dependencies": {},
       "hash": "fe31ad0904abee296b5ea72c6073157accba59e8"
     },
+    "com.harumak.unityscreennavigator": {
+      "version": "https://github.com/Haruma-K/UnityScreenNavigator.git?path=/Assets/UnityScreenNavigator",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "25f57005a48ed90fadb5a6f96a4eaa252d931a11"
+    },
     "com.unity.2d.animation": {
       "version": "10.1.4",
       "depth": 1,
