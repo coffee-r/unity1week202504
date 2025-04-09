@@ -74,4 +74,11 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
+# Custom
+Packages/com.caitsithware.logictoolkit/*
+Assets/Packages
+Assets/Packages.meta
+Assets/Plugins/Demigiant
+
+
 # End of https://www.toptal.com/developers/gitignore/api/unity
