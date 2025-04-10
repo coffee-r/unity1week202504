@@ -79,7 +79,7 @@ Packages/com.caitsithware.logictoolkit/*
 Assets/Packages
 Assets/Packages.meta
 Assets/Plugins/Demigiant
-"Assets/TextMesh Pro"
-"Assets/TextMesh Pro.meta"
+Assets/Plugins/Sirenix
+Assets/TextMesh\ Pro
 
 # End of https://www.toptal.com/developers/gitignore/api/unity
