@@ -2,7 +2,7 @@ using UnityEngine;
 using Cysharp.Threading.Tasks;
 using Sirenix.OdinInspector;
 using UnityEngine.UI;
-using TMPro;
+using System.Threading;
 using DG.Tweening;
 
 /// <summary>
@@ -11,32 +11,31 @@ using DG.Tweening;
 public class ScreenTransitionEffectDefault : MonoBehaviour, IScreenTransitionEffect
 {
     [SerializeField, Header("画面を覆うImage")] Image overrayImage;
+    private float screenWidth => overrayImage.rectTransform.rect.width;
 
     [Button("Play Enter Animation")]
-    public async UniTask PlayEnterAnimation()
+    public async UniTask PlayEnterAnimation(CancellationToken cancellation)
     {
-        overrayImage.rectTransform.localScale = new Vector3(0, 1, 1);
-        overrayImage.rectTransform.SetPivotWithoutMoving(new Vector2(0.0f, 0.5f));
+        overrayImage.rectTransform.anchoredPosition = new Vector2(-screenWidth, 0);
 
         await overrayImage
                 .rectTransform
-                .DOScaleX(1.0f, 2.0f)
+                .DOAnchorPosX(0, 1.0f)
                 .SetEase(Ease.OutSine)
-                .SetDelay(0.0f)
-                .AsyncWaitForCompletion();
+                .AsyncWaitForCompletion()
+                .AsUniTask()
+                .AttachExternalCancellation(cancellation);
     }
 
     [Button("Play Exit Animation")]
-    public async UniTask PlayExitAnimation()
+    public async UniTask PlayExitAnimation(CancellationToken cancellation)
     {
-        overrayImage.rectTransform.localScale = new Vector3(1, 1, 1);
-        overrayImage.rectTransform.SetPivotWithoutMoving(new Vector2(1.0f, 0.5f));
-
         await overrayImage
                 .rectTransform
-                .DOScaleX(0.0f, 2.0f)
+                .DOAnchorPosX(screenWidth, 1.0f)
                 .SetEase(Ease.OutSine)
-                .SetDelay(0.0f)
-                .AsyncWaitForCompletion();
+                .AsyncWaitForCompletion()
+                .AsUniTask()
+                .AttachExternalCancellation(cancellation);
     }
 }

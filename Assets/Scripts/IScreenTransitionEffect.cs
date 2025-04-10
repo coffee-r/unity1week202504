@@ -1,3 +1,4 @@
+using System.Threading;
 using Cysharp.Threading.Tasks;
 
 /// <summary>
@@ -9,11 +10,11 @@ public interface IScreenTransitionEffect
     /// 開始アニメーション
     /// </summary>
     /// <returns></returns>
-    UniTask PlayEnterAnimation();
+    UniTask PlayEnterAnimation(CancellationToken cancellation);
 
     /// <summary>
     /// 終了アニメーション
     /// </summary>
     /// <returns></returns>
-    UniTask PlayExitAnimation();
+    UniTask PlayExitAnimation(CancellationToken cancellation);
 }

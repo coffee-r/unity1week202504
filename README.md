@@ -13,8 +13,8 @@
     - [ x ] Logic Toolkit
     - [ x ] DoTween
     - [ x ] ProCamera2D
-- [ x] ランキングAPI準備
-
+- [ x ] ランキングAPI準備
+- [ x ] Intentツイート
 - タイトル画面、ゲーム画面、リザルト画面の遷移
 - ライセンス画面
 

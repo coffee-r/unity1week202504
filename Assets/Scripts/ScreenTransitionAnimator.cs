@@ -1,3 +1,4 @@
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -20,11 +21,11 @@ public class ScreenTransitionAnimator : MonoBehaviour
     /// <summary>
     /// 開始アニメーションを再生する
     /// </summary>
-    public async UniTask PlayEnter() => await effect.PlayEnterAnimation();
+    public async UniTask PlayEnter(CancellationToken cancellation) => await effect.PlayEnterAnimation(cancellation);
     
     /// <summary>
     /// 終了アニメーションを再生する
     /// </summary>
-    public async UniTask PlayExit() => await effect.PlayExitAnimation();
+    public async UniTask PlayExit(CancellationToken cancellation) => await effect.PlayExitAnimation(cancellation);
 }
 
