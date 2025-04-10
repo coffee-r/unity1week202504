@@ -81,5 +81,7 @@ Assets/Packages.meta
 Assets/Plugins/Demigiant
 Assets/Plugins/Sirenix
 Assets/TextMesh\ Pro
+Assets/ProCamera2D
+Assets/Gizmos/ProCamera2D
 
 # End of https://www.toptal.com/developers/gitignore/api/unity
