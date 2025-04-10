@@ -20,18 +20,11 @@ public class ScreenTransitionAnimator : MonoBehaviour
     /// <summary>
     /// 開始アニメーションを再生する
     /// </summary>
-    public async UniTask PlayEnterAnimation()
-    {
-        await effect.PlayEnterAnimation();
-    }
-
+    public async UniTask PlayEnter() => await effect.PlayEnterAnimation();
+    
     /// <summary>
     /// 終了アニメーションを再生する
     /// </summary>
-    public async UniTask PlayExitAnimation()
-    {
-        await effect.PlayExitAnimation();
-    }
-
+    public async UniTask PlayExit() => await effect.PlayExitAnimation();
 }
 

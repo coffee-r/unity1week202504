@@ -10,39 +10,33 @@ using DG.Tweening;
 /// </summary>
 public class ScreenTransitionEffectDefault : MonoBehaviour, IScreenTransitionEffect
 {
-    [SerializeField] Image image;
-    [SerializeField] TMP_Text text;
-    
-    [SerializeField] Vector3 imageStartPosition;
-    [SerializeField] Vector3 imageEndPosition;
-    [SerializeField] Ease imageEaseType;
-    [SerializeField] float imageEasingDuration;
-    [SerializeField] float imageEasingDelay;
-
-    RectTransform rectTransform => image.GetComponent<RectTransform>();
+    [SerializeField, Header("画面を覆うImage")] Image overrayImage;
 
     [Button("Play Enter Animation")]
     public async UniTask PlayEnterAnimation()
     {
-        if (!Application.isPlaying) return;
-        rectTransform.localPosition = imageStartPosition;
-        await rectTransform
-                .DOLocalMove(imageEndPosition, imageEasingDuration)
-                .SetEase(imageEaseType)
-                .SetDelay(imageEasingDelay)
+        overrayImage.rectTransform.localScale = new Vector3(0, 1, 1);
+        overrayImage.rectTransform.SetPivotWithoutMoving(new Vector2(0.0f, 0.5f));
+
+        await overrayImage
+                .rectTransform
+                .DOScaleX(1.0f, 2.0f)
+                .SetEase(Ease.OutSine)
+                .SetDelay(0.0f)
                 .AsyncWaitForCompletion();
-        Debug.Log("End PlayEnterAnimation");
     }
 
     [Button("Play Exit Animation")]
     public async UniTask PlayExitAnimation()
     {
-        if (!Application.isPlaying) return;
-        rectTransform.localPosition = imageEndPosition;
-        await rectTransform
-                .DOLocalMove(imageStartPosition, imageEasingDuration)
-                .SetEase(imageEaseType)
-                .SetDelay(imageEasingDelay)
+        overrayImage.rectTransform.localScale = new Vector3(1, 1, 1);
+        overrayImage.rectTransform.SetPivotWithoutMoving(new Vector2(1.0f, 0.5f));
+
+        await overrayImage
+                .rectTransform
+                .DOScaleX(0.0f, 2.0f)
+                .SetEase(Ease.OutSine)
+                .SetDelay(0.0f)
                 .AsyncWaitForCompletion();
     }
 }
