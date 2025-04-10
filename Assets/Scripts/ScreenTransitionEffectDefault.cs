@@ -30,6 +30,8 @@ public class ScreenTransitionEffectDefault : MonoBehaviour, IScreenTransitionEff
     [Button("Play Exit Animation")]
     public async UniTask PlayExitAnimation(CancellationToken cancellation)
     {
+        overrayImage.rectTransform.anchoredPosition = new Vector2(0, 0);
+
         await overrayImage
                 .rectTransform
                 .DOAnchorPosX(screenWidth, 1.0f)
