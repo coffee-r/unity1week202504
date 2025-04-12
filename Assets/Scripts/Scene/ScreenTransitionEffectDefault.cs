@@ -14,7 +14,7 @@ public class ScreenTransitionEffectDefault : MonoBehaviour, IScreenTransitionEff
     private float screenWidth => overrayImage.rectTransform.rect.width;
 
     [Button("Play Enter Animation")]
-    public async UniTask PlayEnterAnimation(CancellationToken cancellation)
+    public async UniTask PlayEnterAnimation(CancellationToken cancellation = default)
     {
         overrayImage.rectTransform.anchoredPosition = new Vector2(-screenWidth, 0);
 
@@ -28,7 +28,7 @@ public class ScreenTransitionEffectDefault : MonoBehaviour, IScreenTransitionEff
     }
 
     [Button("Play Exit Animation")]
-    public async UniTask PlayExitAnimation(CancellationToken cancellation)
+    public async UniTask PlayExitAnimation(CancellationToken cancellation = default)
     {
         overrayImage.rectTransform.anchoredPosition = new Vector2(0, 0);
 

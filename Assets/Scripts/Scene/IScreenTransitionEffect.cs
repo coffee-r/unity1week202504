@@ -10,11 +10,11 @@ public interface IScreenTransitionEffect
     /// 開始アニメーション
     /// </summary>
     /// <returns></returns>
-    UniTask PlayEnterAnimation(CancellationToken cancellation);
+    UniTask PlayEnterAnimation(CancellationToken cancellation = default);
 
     /// <summary>
     /// 終了アニメーション
     /// </summary>
     /// <returns></returns>
-    UniTask PlayExitAnimation(CancellationToken cancellation);
+    UniTask PlayExitAnimation(CancellationToken cancellation = default);
 }
