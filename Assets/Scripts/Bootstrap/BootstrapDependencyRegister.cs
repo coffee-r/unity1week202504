@@ -6,9 +6,11 @@ using UnityEngine;
 public class BootstrapDependencyRegister : MonoBehaviour
 {
     [SerializeField] ScreenTransitionEffectDefault screenTransitionEffectDefault;
+    [SerializeField] AudioManager audioManager;
 
     void Awake()
     {
+        ServiceLocator.Instance.Register(audioManager);
         ServiceLocator.Instance.Register(new SceneContext());
         ServiceLocator.Instance.Register<IScreenTransitionEffect>(screenTransitionEffectDefault, "Default");
         ServiceLocator.Instance.Register(new SceneRouter());
@@ -16,6 +18,7 @@ public class BootstrapDependencyRegister : MonoBehaviour
 
     void OnDestroy()
     {
+        ServiceLocator.Instance.UnRegister<AudioManager>();
         ServiceLocator.Instance.UnRegister<SceneContext>();
         ServiceLocator.Instance.UnRegister<SceneRouter>();
         ServiceLocator.Instance.UnRegister<IScreenTransitionEffect>("Default");
