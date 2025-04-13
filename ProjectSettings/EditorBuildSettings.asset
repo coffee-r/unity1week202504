@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Bootstrap.unity
     guid: 73e3f7f0137bb43258aac9f263a87989
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Transition.unity
     guid: ffbd5f49acc554992834dabe33cfb6df
   - enabled: 1

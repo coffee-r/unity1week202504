@@ -7,6 +7,7 @@ public class ResultPresenter : MonoBehaviour
 {
     [SerializeField] TMP_Text scoreText;
     [SerializeField] Button retryButton;
+    [SerializeField] Button snsShareButton;
 
     SceneRouter sceneRouter;
     IScreenTransitionEffect iScreenTransitionEffect;
