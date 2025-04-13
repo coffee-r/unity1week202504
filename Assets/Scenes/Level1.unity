@@ -950,7 +950,7 @@ MonoBehaviour:
         _Seconds:
           _InputPort:
             _ConnectedWires: []
-          _Value: 3
+          _Value: 2
         _TimerType: 0
         _Overflow:
           _ConnectedWires: []
@@ -1077,7 +1077,7 @@ MonoBehaviour:
         _Seconds:
           _InputPort:
             _ConnectedWires: []
-          _Value: 5
+          _Value: 3
         _TimerType: 0
         _Overflow:
           _ConnectedWires: []
@@ -1337,7 +1337,7 @@ MonoBehaviour:
     - rid: 2778534322917615143
       type: {class: PlayerMover, ns: , asm: Assembly-CSharp}
       data:
-        moveSpeed: 0.01
+        moveSpeed: 0.1
     - rid: 2778534323314763722
       type: {class: StateNode, ns: LogicToolkit.StateMachines, asm: LogicToolkit}
       data:

@@ -75,6 +75,7 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
 # Custom
+WebGLBuild/
 Packages/com.caitsithware.logictoolkit/*
 Assets/Packages
 Assets/Packages.meta
