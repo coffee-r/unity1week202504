@@ -27,5 +27,12 @@ public class ResultPresenter : MonoBehaviour
             {
                 await sceneRouter.NavigateToAsync("Scenes/Level1", iScreenTransitionEffect, ct);
             }).AddTo(this);
+        
+        snsShareButton
+            .OnClickAsObservable()
+            .Subscribe(_ => 
+            {
+                naichilab.UnityRoomTweet.Tweet ("YOUR-GAMEID", "ツイートサンプルです。", "unityroom", "unity1week");
+            }).AddTo(this);
     }
 }

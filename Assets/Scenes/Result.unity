@@ -301,6 +301,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 545943182}
   retryButton: {fileID: 1960046245}
+  snsShareButton: {fileID: 2112934488}
 --- !u!1 &1074474641
 GameObject:
   m_ObjectHideFlags: 0
