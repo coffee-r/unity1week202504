@@ -2,10 +2,6 @@
 Demigiant
 https://dotween.demigiant.com/pro.php
 
-# Logic Toolkit
-cait sith ware
-https://logictoolkit.caitsithware.com/ja/
-
 # Odin Inspector and Serializer
 Sirenix
 https://odininspector.com/
@@ -33,3 +29,7 @@ https://github.com/GlitchEnzo/NuGetForUnity
 # unityroom-tweet
 naichilab
 https://github.com/naichilab/unityroom-tweet
+
+# 鉄瓶ゴシック
+フロップデザインフォント
+https://flopdesign.booth.pm/items/3970314

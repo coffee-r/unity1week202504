@@ -59,6 +59,30 @@ public class SceneRouter : IDisposable
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(currentActiveScene.name));
     }
 
+    public async UniTask<int?> ShowItemUseModalAsync(string sceneName, CancellationToken cancellation = default)
+    {
+        // 現在のアクティブなシーンを取得
+        var currentActiveScene = SceneManager.GetActiveScene();
+
+        // 次のシーンをロード
+        await SceneManager.LoadSceneAsync(sceneName, LoadSceneMode.Additive);
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneName));
+
+        // modalを閉じるまで待つ
+        var sceneContext = ServiceLocator.Instance.Resolve<SceneContext>();
+        await sceneContext.ModalClose.Task.AttachExternalCancellation(cancellation);
+
+        // モーダルシーンをアンロード
+        await SceneManager.UnloadSceneAsync(SceneManager.GetSceneByName(sceneName));
+        var itemId = sceneContext.UseItemId;
+        sceneContext.Reset();
+
+        // アクティブなシーンを元に戻す
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(currentActiveScene.name));
+
+        return itemId;
+    }
+
     public void Dispose()
     {
         compositeDisposable.Dispose();

@@ -77,6 +77,7 @@ crashlytics-build.properties
 # Custom
 WebGLBuild/
 Packages/com.caitsithware.logictoolkit/*
+Assets/Font
 Assets/Packages
 Assets/Packages.meta
 Assets/Plugins/Demigiant

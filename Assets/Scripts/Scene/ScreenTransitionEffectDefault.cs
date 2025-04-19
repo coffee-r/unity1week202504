@@ -10,17 +10,15 @@ using DG.Tweening;
 /// </summary>
 public class ScreenTransitionEffectDefault : MonoBehaviour, IScreenTransitionEffect
 {
-    [SerializeField, Header("画面を覆うImage")] Image overrayImage;
-    private float screenWidth => overrayImage.rectTransform.rect.width;
+    [SerializeField] CanvasGroup overrayCanvasGroup;
 
     [Button("Play Enter Animation")]
     public async UniTask PlayEnterAnimation(CancellationToken cancellation = default)
     {
-        overrayImage.rectTransform.anchoredPosition = new Vector2(-screenWidth, 0);
+        overrayCanvasGroup.alpha = 0;
 
-        await overrayImage
-                .rectTransform
-                .DOAnchorPosX(0, 1.0f)
+        await overrayCanvasGroup
+                .DOFade(1.0f, 1.0f)
                 .SetEase(Ease.OutSine)
                 .AsyncWaitForCompletion()
                 .AsUniTask()
@@ -30,11 +28,8 @@ public class ScreenTransitionEffectDefault : MonoBehaviour, IScreenTransitionEff
     [Button("Play Exit Animation")]
     public async UniTask PlayExitAnimation(CancellationToken cancellation = default)
     {
-        overrayImage.rectTransform.anchoredPosition = new Vector2(0, 0);
-
-        await overrayImage
-                .rectTransform
-                .DOAnchorPosX(screenWidth, 1.0f)
+        await overrayCanvasGroup
+                .DOFade(0.0f, 1.0f)
                 .SetEase(Ease.OutSine)
                 .AsyncWaitForCompletion()
                 .AsUniTask()

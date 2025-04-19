@@ -1,4 +1,5 @@
 
+using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 
 #nullable enable
@@ -9,12 +10,15 @@ using Cysharp.Threading.Tasks;
 /// </summary>
 public class SceneContext
 {
-    public float? Score { get; set; }
+    public List<ItemData>? PackedItems;
+    public int? UseItemId;
+
     public UniTaskCompletionSource? ModalClose {get; set;}
 
     public void Reset()
     {
-        Score = null;
+        PackedItems = null;
+        UseItemId = null;
         ModalClose = null;
     }
 }

@@ -24,7 +24,7 @@ public class TitlePresenter : MonoBehaviour
             .SubscribeAwait(async (x, ct) => 
             {
                 audioManager.PlayBGM("BGM_BATTLE");
-                await sceneRouter.NavigateToAsync("Scenes/Level1", iScreenTransitionEffect, ct);
+                await sceneRouter.NavigateToAsync("Scenes/Planning", iScreenTransitionEffect, ct);
             }).AddTo(this);
 
         licenceButton

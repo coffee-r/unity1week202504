@@ -15,8 +15,6 @@ public class ResultPresenter : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        IScore iscore = ServiceLocator.Instance.Resolve<IScore>();
-        scoreText.text = iscore.GetScore().ToString();
 
         sceneRouter = ServiceLocator.Instance.Resolve<SceneRouter>();
         iScreenTransitionEffect = ServiceLocator.Instance.Resolve<IScreenTransitionEffect>("Default");
