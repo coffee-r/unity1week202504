@@ -14,6 +14,7 @@ public class TrekkingPresenter : MonoBehaviour
     [SerializeField] Button moveButton;
     [SerializeField] Button itemUseButton;
     [SerializeField] Button itemEquipmentButton;
+    [SerializeField] Image backgroundImage;
     SceneRouter sceneRouter;
     IScreenTransitionEffect iScreenTransitionEffect;
     AudioManager audioManager;
@@ -24,11 +25,18 @@ public class TrekkingPresenter : MonoBehaviour
         iScreenTransitionEffect = ServiceLocator.Instance.Resolve<IScreenTransitionEffect>("Default");
         audioManager = ServiceLocator.Instance.Resolve<AudioManager>();
 
+        // 背景画像設定
+        var course = ServiceLocator.Instance.Resolve<Trekking>().CurrentCourse;
+        backgroundImage.sprite = course.SpriteImage;
+        backgroundImage.rectTransform.sizeDelta = course.SpriteSize;
+
         // 開始まで待つ
         await UniTask.WaitForSeconds(startWaitForSeconds);
 
         // 開幕のメッセージを流す
-        await messageText.ShowInOrder(startMessages);
+        readyUIGroup.SetActive(false);
+        await messageText.ShowStatusMessage();
+        readyUIGroup.SetActive(true);
 
         // ゲーム開始
         trekkingStatus.Value = TrekkingStatus.Ready;
@@ -42,6 +50,8 @@ public class TrekkingPresenter : MonoBehaviour
                 // 一部のUI非表示
                 readyUIGroup.SetActive(false);
 
+                audioManager.PlaySE("SE_SELECTED");
+
                 // 移動する
                 var moveResult = ServiceLocator.Instance.Resolve<Trekking>().Move();
 
@@ -50,23 +60,35 @@ public class TrekkingPresenter : MonoBehaviour
 
                 // クリア時のシーン遷移
                 if (moveResult.IsReachKatanokoya) {
+                    audioManager.StopBGM(0.5f);
+                    ServiceLocator.Instance.Resolve<Trekking>().ToLevel2();
                     await sceneRouter.NavigateToAsync("Scenes/Goal1", iScreenTransitionEffect, ct);
                     return;
                 }
                 if (moveResult.IsReachKitadake) {
+                    audioManager.StopBGM(0.5f);
                     await sceneRouter.NavigateToAsync("Scenes/Goal2", iScreenTransitionEffect, ct);
                     return;
                 }
                 if (moveResult.IsReachAinodake) {
+                    audioManager.StopBGM(0.5f);
                     await sceneRouter.NavigateToAsync("Scenes/Goal3", iScreenTransitionEffect, ct);
                     return;
                 }
 
                 // 遭難時のシーン遷移
                 if (moveResult.IsGameOver) {
+                    audioManager.StopBGM(0.5f);
                     await sceneRouter.NavigateToAsync("Scenes/GameOver", iScreenTransitionEffect, ct);
                     return;
                 }
+
+                // 背景画像変更
+                var course = ServiceLocator.Instance.Resolve<Trekking>().CurrentCourse;
+                backgroundImage.sprite = course.SpriteImage;
+                backgroundImage.rectTransform.sizeDelta = course.SpriteSize;
+
+                await messageText.ShowStatusMessage();
 
                 // 一部のUI表示復活
                 readyUIGroup.SetActive(true);
@@ -89,9 +111,10 @@ public class TrekkingPresenter : MonoBehaviour
                 ServiceLocator.Instance.Resolve<SceneContext>().ModalClose = uts;
                 var itemId = await sceneRouter.ShowItemUseModalAsync("Scenes/ItemUse", ct);
 
-                if (itemId != null) {
-                    var useResult = ServiceLocator.Instance.Resolve<Trekking>().UseItem(itemId);
+                var useResult = ServiceLocator.Instance.Resolve<Trekking>().UseItem(itemId);
+                if (useResult.ResultMessages.Count > 0) {
                     await messageText.ShowInOrder(useResult.ResultMessages);
+                    await messageText.ShowStatusMessage();
                 }
 
                 // 一部のUI表示復活
@@ -112,6 +135,8 @@ public class TrekkingPresenter : MonoBehaviour
                 var uts = new UniTaskCompletionSource();
                 ServiceLocator.Instance.Resolve<SceneContext>().ModalClose = uts;
                 await sceneRouter.ShowModalAsync("Scenes/ItemEquipment", ct);
+
+                await messageText.ShowStatusMessage();
 
                 // 一部のUI表示復活
                 readyUIGroup.SetActive(true);

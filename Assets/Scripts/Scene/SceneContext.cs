@@ -12,6 +12,7 @@ public class SceneContext
 {
     public List<ItemData>? PackedItems;
     public int? UseItemId;
+    public bool Continue = false;
 
     public UniTaskCompletionSource? ModalClose {get; set;}
 

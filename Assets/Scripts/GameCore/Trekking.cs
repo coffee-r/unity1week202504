@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using Unity.VisualScripting.Dependencies.NCalc;
 
 /// <summary>
 /// 登山を表現します
@@ -13,18 +14,18 @@ public class Trekking
     readonly MasterData MasterData;
     TroubleSelector TroubleSelector;
     public List<ItemData> ConsumableItems;
-    List<ItemData> EquippableItems;
-    List<ItemData> EquippedItems; //2つまで
-    List<TroubleData> CurrentTroubles;
-    public int CurrentDistance {get; private set;}
+    public List<ItemData> EquippableItems;
+    public List<ItemData> EquippedItems; //2つまで
+    public List<TroubleData> CurrentTroubles;
+    public int CurrentDistance;
     public int CurrentDay {get; private set;}
     public int CurrentMinites {get; private set;}
-    CourseData CurrentCourse;
-    WeatherType CurrentWeather;
-    TerrainType CurrentTerrain;
-    bool IsReachedKatanokoya;
-    bool IsReachedKitadake;
-    bool IsReachedAinodake;
+    public CourseData CurrentCourse;
+    public WeatherType CurrentWeather;
+    public TerrainType CurrentTerrain;
+    public bool IsReachedKatanokoya;
+    public bool IsReachedKitadake;
+    public bool IsReachedAinodake;
 
     public Trekking(MasterData masterData, List<ItemData> PackedItems)
     {
@@ -70,6 +71,13 @@ public class Trekking
                             .First()
                             .TerrainType;
         
+        // 現在のコースを初期化
+        CurrentCourse = MasterData
+                            .CourseList
+                            .Where(x => CurrentDistance >= x.DistanceMeterStart)
+                            .Where(x => CurrentDistance <= x.DistanceMeterEnd)
+                            .First();
+        
         // ゴール達成フラグを初期化
         IsReachedKatanokoya = false;
         IsReachedKitadake = false;
@@ -103,13 +111,13 @@ public class Trekking
         var weatherItem = EquippedItems.Find(x => x.ManageableWeatherTypes.Contains(CurrentWeather));
        
         // 天候ペナルティ
-        if (weather.MovementMessage != "") {
+        if (weather.MovementMessage != "" && weatherItem != null) {
+            resultMessages.Add(weather.MovementMessage + weatherItem.Name + " を使って対応した。");
+        } else if (weather.MovementMessage != "") {
             resultMessages.Add(weather.MovementMessage);
-        }
-        if (weatherItem == null) {
             penalty += weather.MovementPenalty;
         } else {
-            resultMessages.Add(weatherItem.Name + " を使って対応した。");
+            // 何もしない
         }
 
         // 地形
@@ -118,14 +126,14 @@ public class Trekking
         // 地形に対処できる装備をしているか
         var terrainItem = EquippedItems.Find(x => x.ManageableTerrainTypes.Contains(CurrentTerrain));
 
-        // 地形ペナルティ
-        if (terrain.MovementMessage != "") {
+        // 地形
+        if (terrain.MovementMessage != "" && terrainItem != null) {
+            resultMessages.Add(terrain.MovementMessage + terrainItem.Name + " を使って対応した。");
+        } else if (terrain.MovementMessage != "") {
             resultMessages.Add(terrain.MovementMessage);
-        }
-        if (weatherItem == null) {
             penalty += terrain.MovementPenalty;
         } else {
-            resultMessages.Add(terrainItem.Name + " を使って対応した。");
+            // 何もしない
         }
 
         // 距離進行
@@ -142,6 +150,21 @@ public class Trekking
         // 進行後のコース情報
         var nextCource = MasterData.CourseList.Where(x => x.DistanceMeterStart <= CurrentDistance && x.DistanceMeterEnd >= CurrentDistance).First();
         CurrentCourse = nextCource;
+
+        // 進行後の天候
+        CurrentWeather = MasterData
+                            .WeatherScheduleList
+                            .Where(x => CurrentMinites >= x.MinitesStart && CurrentMinites <= x.MinitesEnd)
+                            .First()
+                            .WeatherType;
+
+        // 進行後の地形
+        CurrentTerrain = MasterData
+                            .CourseList
+                            .Where(x => CurrentDistance >= x.DistanceMeterStart)
+                            .Where(x => CurrentDistance <= x.DistanceMeterEnd)
+                            .First()
+                            .TerrainType;
 
         // トラブル発生抽選
         var troubleRandom = new Random();
@@ -197,7 +220,7 @@ public class Trekking
     public ItemUseResult UseItem(int? itemId)
     {
         if (itemId == null) {
-            new ItemUseResult(new List<string>());
+            return new ItemUseResult(new List<string>());
         }
 
         // メッセージ
@@ -222,6 +245,13 @@ public class Trekking
         }
 
         return new ItemUseResult(resultMessages);
+    }
+
+    public void ToLevel2()
+    {
+        CurrentDay = 2;
+        CurrentMinites = MasterData.GameSetting.Day2StartMinutes;
+        CurrentTroubles = new List<TroubleData>();
     }
 
 }

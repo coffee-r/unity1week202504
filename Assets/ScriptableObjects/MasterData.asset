@@ -22,7 +22,7 @@ MonoBehaviour:
     Day1StartMinutes: 540
     Day2StartMinutes: 240
     Day1TimeLimitMinutes: 900
-    Day2TimeLimitMinutes: 480
+    Day2TimeLimitMinutes: 600
   ItemList:
   - id: 1
     Name: "250ml\u306E\u6C34"
@@ -247,7 +247,7 @@ MonoBehaviour:
     Consumable: 0
     ResolvableTroubleTypes: 
     ManageableWeatherTypes: 
-    ManageableTerrainTypes: 02000000
+    ManageableTerrainTypes: 03000000
   - id: 33
     Name: "\u7D30\u5F15\u304D\u30ED\u30FC\u30D7"
     WeightGrams: 80
@@ -275,14 +275,14 @@ MonoBehaviour:
     Consumable: 0
     ResolvableTroubleTypes: 
     ManageableWeatherTypes: 
-    ManageableTerrainTypes: 04000000
+    ManageableTerrainTypes: 06000000
   - id: 37
     Name: "\u8584\u624B\u306E\u30B0\u30ED\u30FC\u30D6"
     WeightGrams: 100
     Consumable: 0
     ResolvableTroubleTypes: 
     ManageableWeatherTypes: 
-    ManageableTerrainTypes: 03000000
+    ManageableTerrainTypes: 05000000
   - id: 38
     Name: "\u5E3D\u5B50"
     WeightGrams: 70
@@ -315,7 +315,7 @@ MonoBehaviour:
     Name: "\u30D5\u30A1\u30FC\u30B9\u30C8\u30A8\u30A4\u30C9\u30AD\u30C3\u30C8"
     WeightGrams: 200
     Consumable: 1
-    ResolvableTroubleTypes: 000000000500000009000000
+    ResolvableTroubleTypes: 00000000050000000900000004000000
     ManageableWeatherTypes: 
     ManageableTerrainTypes: 
   - id: 43
@@ -380,14 +380,14 @@ MonoBehaviour:
     Consumable: 0
     ResolvableTroubleTypes: 
     ManageableWeatherTypes: 
-    ManageableTerrainTypes: 02000000
+    ManageableTerrainTypes: 03000000
   - id: 52
     Name: "10\u672C\u722A\u30A2\u30A4\u30BC\u30F3"
     WeightGrams: 800
     Consumable: 0
     ResolvableTroubleTypes: 
     ManageableWeatherTypes: 
-    ManageableTerrainTypes: 02000000
+    ManageableTerrainTypes: 03000000
   - id: 53
     Name: "\u30B5\u30F3\u30B0\u30E9\u30B9"
     WeightGrams: 40
@@ -398,7 +398,7 @@ MonoBehaviour:
   - id: 54
     Name: "\u5C71\u5CB3\u7528\u30C6\u30F3\u30C8"
     WeightGrams: 1300
-    Consumable: 0
+    Consumable: 1
     ResolvableTroubleTypes: 
     ManageableWeatherTypes: 
     ManageableTerrainTypes: 
@@ -438,20 +438,26 @@ MonoBehaviour:
     TroubleOccurrencePercent: 0
     TerrainType: 0
     LocationName: "\u5E83\u6CB3\u539F"
+    SpriteImage: {fileID: -1059335925553414096, guid: 5ad3caa7c518149399ed95438d8f28e1, type: 3}
+    SpriteSize: {x: 1000, y: 1333}
   - DistanceMeterStart: 1
     DistanceMeterEnd: 999
     Altitude: 1700
     TrekkerMovableSpeed: 400
     TroubleOccurrencePercent: 30
-    TerrainType: 2
+    TerrainType: 1
     LocationName: "\u767D\u6839\u5FA1\u6C60\u307E\u3067\u306E\u6025\u767B1"
+    SpriteImage: {fileID: -4379503277668925510, guid: 166b0b3bc8fc14975b6c456bc99f272d, type: 3}
+    SpriteSize: {x: 1024, y: 1365}
   - DistanceMeterStart: 1000
     DistanceMeterEnd: 2399
     Altitude: 2100
     TrekkerMovableSpeed: 400
     TroubleOccurrencePercent: 30
-    TerrainType: 1
+    TerrainType: 2
     LocationName: "\u767D\u6839\u5FA1\u6C60\u307E\u3067\u306E\u6025\u767B2"
+    SpriteImage: {fileID: -444879023042207796, guid: 56d06686ec71f46bc94d1e2f1678d2c3, type: 3}
+    SpriteSize: {x: 1000, y: 750}
   - DistanceMeterStart: 2400
     DistanceMeterEnd: 3099
     Altitude: 2200
@@ -459,6 +465,8 @@ MonoBehaviour:
     TroubleOccurrencePercent: 30
     TerrainType: 3
     LocationName: "\u8349\u30B9\u30D9\u30EA\u624B\u524D"
+    SpriteImage: {fileID: 1977373298795435877, guid: c5b1a047b402b4b84bce95d3b5a02197, type: 3}
+    SpriteSize: {x: 1000, y: 1333}
   - DistanceMeterStart: 3100
     DistanceMeterEnd: 3699
     Altitude: 2500
@@ -466,6 +474,8 @@ MonoBehaviour:
     TroubleOccurrencePercent: 30
     TerrainType: 1
     LocationName: "\u8349\u30B9\u30D9\u30EA"
+    SpriteImage: {fileID: -3464138253987999521, guid: 0b38dd4b735dd469ba6ffd07f8920a13, type: 3}
+    SpriteSize: {x: 1024, y: 768}
   - DistanceMeterStart: 3700
     DistanceMeterEnd: 4699
     Altitude: 2800
@@ -473,6 +483,8 @@ MonoBehaviour:
     TroubleOccurrencePercent: 30
     TerrainType: 4
     LocationName: "\u5317\u5CB3\u306E\u80A9\u53E3\u307E\u3067\u306E\u9053\u306E\u308A"
+    SpriteImage: {fileID: -3551070871408067450, guid: 4447d57ebaf594308a0b42d19980a819, type: 3}
+    SpriteSize: {x: 1024, y: 768}
   - DistanceMeterStart: 4700
     DistanceMeterEnd: 4999
     Altitude: 3000
@@ -480,6 +492,8 @@ MonoBehaviour:
     TroubleOccurrencePercent: 40
     TerrainType: 6
     LocationName: "\u5317\u5CB3\u306E\u80A9\u53E3"
+    SpriteImage: {fileID: -9079092716238181513, guid: 8c838abf582344007ae1ce8ef0bc6f0d, type: 3}
+    SpriteSize: {x: 1024, y: 768}
   - DistanceMeterStart: 5000
     DistanceMeterEnd: 5499
     Altitude: 3150
@@ -487,6 +501,8 @@ MonoBehaviour:
     TroubleOccurrencePercent: 40
     TerrainType: 6
     LocationName: "\u5317\u5CB3\u5C71\u9802\u524D"
+    SpriteImage: {fileID: -8467108524499351907, guid: cdae6a8e5400249e8ab196c78a99c315, type: 3}
+    SpriteSize: {x: 1024, y: 768}
   - DistanceMeterStart: 5500
     DistanceMeterEnd: 5899
     Altitude: 3150
@@ -494,6 +510,8 @@ MonoBehaviour:
     TroubleOccurrencePercent: 50
     TerrainType: 5
     LocationName: "\u5317\u5CB3\u5C71\u9802\u306E\u4E0B\u308A\u9053"
+    SpriteImage: {fileID: -6706850039018521650, guid: 234c92493e9d94a69930ecb42a2d50c0, type: 3}
+    SpriteSize: {x: 1024, y: 768}
   - DistanceMeterStart: 5900
     DistanceMeterEnd: 8999
     Altitude: 2900
@@ -501,6 +519,8 @@ MonoBehaviour:
     TroubleOccurrencePercent: 50
     TerrainType: 4
     LocationName: "\u5929\u7A7A\u306E\u7A1C\u7DDA"
+    SpriteImage: {fileID: -87506591859453776, guid: 9f505782f16124580b9a4e5978eabef4, type: 3}
+    SpriteSize: {x: 2048, y: 555}
   - DistanceMeterStart: 9000
     DistanceMeterEnd: 99999
     Altitude: 2900
@@ -508,6 +528,8 @@ MonoBehaviour:
     TroubleOccurrencePercent: 0
     TerrainType: 4
     LocationName: "\u5929\u7A7A\u306E\u7A1C\u7DDA"
+    SpriteImage: {fileID: -87506591859453776, guid: 9f505782f16124580b9a4e5978eabef4, type: 3}
+    SpriteSize: {x: 2048, y: 555}
   TerrainList:
   - TerrainType: 0
     MovementPenalty: 0
@@ -596,9 +618,6 @@ MonoBehaviour:
   - TroubleType: 6
     MovementPenalty: 50
     MovementMessage: "\u7B4B\u8089\u75DB\u3067\u819D\u304C\u7B11\u3063\u3066\u3044\u308B\u3002"
-  - TroubleType: 7
-    MovementPenalty: 40
-    MovementMessage: "\u4F53\u304C\u5BD2\u3044\u3002"
   - TroubleType: 8
     MovementPenalty: 200
     MovementMessage: "\u9774\u7D10\u304C\u5207\u308C\u3066\u6B69\u3051\u306A\u3055\u305D\u3046\u3060\u3002"

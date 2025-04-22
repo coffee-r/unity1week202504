@@ -22,6 +22,7 @@ public class GameOverPresenter : MonoBehaviour
             .SubscribeAwait(async (x, ct) => 
             {
                 audioManager.PlaySE("SE_SELECTED");
+                ServiceLocator.Instance.Resolve<SceneContext>().Continue = false;
                 await sceneRouter.NavigateToAsync("Scenes/Title", iScreenTransitionEffect, ct);
             }).AddTo(this);
     }

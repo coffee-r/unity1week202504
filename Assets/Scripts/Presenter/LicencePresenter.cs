@@ -9,20 +9,22 @@ public class LicencePresenter : MonoBehaviour
     [SerializeField] Button closeButton;
     [SerializeField] TMP_Text licenceText;
     SceneContext sceneContext;
+    AudioManager audioManager;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    async void Start()
+    void Start()
     {
         sceneContext = ServiceLocator.Instance.Resolve<SceneContext>();
+        audioManager = ServiceLocator.Instance.Resolve<AudioManager>();
 
         // Modalを閉じたらSceneRouterに閉じたことが伝わるようにする
         closeButton
             .OnClickAsObservable()
-            .Subscribe(_ => sceneContext?.ModalClose.TrySetResult())
+            .Subscribe(_ => 
+            {
+                audioManager.PlaySE("SE_SELECTED");
+                sceneContext?.ModalClose.TrySetResult();
+            })
             .AddTo(this);
-        
-        var operation = Resources.LoadAsync("LICENCE");
-        await operation;
-        licenceText.text = (operation.asset as TextAsset).text;
     }
 }

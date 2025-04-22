@@ -178,8 +178,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u30AF\u30EC\u30B8\u30C3\u30C8"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 97eb7cef745134ff296c836b6e604efd, type: 2}
-  m_sharedMaterial: {fileID: 1483924375152660032, guid: 97eb7cef745134ff296c836b6e604efd, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: fcad0fd87132c49e6bff7e92380b7bb0, type: 2}
+  m_sharedMaterial: {fileID: -2759880325710423165, guid: fcad0fd87132c49e6bff7e92380b7bb0, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -314,8 +314,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u767B\u5C71\u306E\u6E96\u5099\u3092\u3059\u308B"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 97eb7cef745134ff296c836b6e604efd, type: 2}
-  m_sharedMaterial: {fileID: 1483924375152660032, guid: 97eb7cef745134ff296c836b6e604efd, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: fcad0fd87132c49e6bff7e92380b7bb0, type: 2}
+  m_sharedMaterial: {fileID: -2759880325710423165, guid: fcad0fd87132c49e6bff7e92380b7bb0, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -571,8 +571,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u9593\u30CE\u5CB3"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 08cb38dc9edee4738aa5006f89bfedf1, type: 2}
-  m_sharedMaterial: {fileID: 8081912586632828874, guid: 08cb38dc9edee4738aa5006f89bfedf1, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: fcad0fd87132c49e6bff7e92380b7bb0, type: 2}
+  m_sharedMaterial: {fileID: -2759880325710423165, guid: fcad0fd87132c49e6bff7e92380b7bb0, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -696,10 +696,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 960, y: 540}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3

@@ -29,26 +29,26 @@ public class Goal3Presenter : MonoBehaviour
         iScreenTransitionEffect = ServiceLocator.Instance.Resolve<IScreenTransitionEffect>("Default");
         audioManager = ServiceLocator.Instance.Resolve<AudioManager>();
 
-        await UniTask.WaitForSeconds(1);
+        audioManager.PlayBGM("Goal1", 0, false);
 
         Image0.gameObject.SetActive(true);
 
-        await UniTask.WaitForSeconds(4);
+        await UniTask.WaitForSeconds(5);
 
         Image1.gameObject.SetActive(true);
         Image0.gameObject.SetActive(false);
 
-        await UniTask.WaitForSeconds(4);
+        await UniTask.WaitForSeconds(5);
 
         Image2.gameObject.SetActive(true);
         Image1.gameObject.SetActive(false);
 
-        await UniTask.WaitForSeconds(4);
+        await UniTask.WaitForSeconds(5);
 
         Image3.gameObject.SetActive(true);
         Image2.gameObject.SetActive(false);
 
-        await UniTask.WaitForSeconds(4);
+        await UniTask.WaitForSeconds(5);
 
         Image4.gameObject.SetActive(true);
         text0.gameObject.SetActive(true);
@@ -71,6 +71,7 @@ public class Goal3Presenter : MonoBehaviour
             .SubscribeAwait(async (x, ct) => 
             {
                 audioManager.PlaySE("SE_SELECTED");
+                ServiceLocator.Instance.Resolve<SceneContext>().Continue = false;
                 await sceneRouter.NavigateToAsync("Scenes/Title", iScreenTransitionEffect, ct);
             }).AddTo(this);
     }

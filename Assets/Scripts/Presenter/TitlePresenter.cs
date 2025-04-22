@@ -18,12 +18,13 @@ public class TitlePresenter : MonoBehaviour
         sceneRouter = ServiceLocator.Instance.Resolve<SceneRouter>();
         iScreenTransitionEffect = ServiceLocator.Instance.Resolve<IScreenTransitionEffect>("Default");
         audioManager = ServiceLocator.Instance.Resolve<AudioManager>();
+        audioManager.PlayBGM("kewashii-tozandou");
 
         gameStartButton
             .OnClickAsObservable()
             .SubscribeAwait(async (x, ct) => 
             {
-                audioManager.PlayBGM("BGM_BATTLE");
+                audioManager.PlaySE("SE_SELECTED");
                 await sceneRouter.NavigateToAsync("Scenes/Planning", iScreenTransitionEffect, ct);
             }).AddTo(this);
 
@@ -32,7 +33,6 @@ public class TitlePresenter : MonoBehaviour
             .SubscribeAwait(async (x, ct) => 
             {
                 audioManager.PlaySE("SE_SELECTED");
-
                 var uts = new UniTaskCompletionSource();
                 ServiceLocator.Instance.Resolve<SceneContext>().ModalClose = uts;
                 await sceneRouter.ShowModalAsync("Scenes/Licence", ct);

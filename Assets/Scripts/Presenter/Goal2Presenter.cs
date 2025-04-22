@@ -27,18 +27,18 @@ public class Goal2Presenter : MonoBehaviour
         iScreenTransitionEffect = ServiceLocator.Instance.Resolve<IScreenTransitionEffect>("Default");
         audioManager = ServiceLocator.Instance.Resolve<AudioManager>();
 
-        await UniTask.WaitForSeconds(2);
+        audioManager.PlayBGM("Goal1", 0, false);
 
         Image0.gameObject.SetActive(true);
 
-        await UniTask.WaitForSeconds(3);
+        await UniTask.WaitForSeconds(5);
 
         Image1.gameObject.SetActive(true);
         Image0.gameObject.SetActive(false);
-
-        await UniTask.WaitForSeconds(3);
-
         Video0.gameObject.SetActive(true);
+
+        await UniTask.WaitForSeconds(5);
+
         Image1.gameObject.SetActive(false);
 
         await UniTask.WaitForSeconds(6);
@@ -46,12 +46,12 @@ public class Goal2Presenter : MonoBehaviour
         Image3.gameObject.SetActive(true);
         Video0.gameObject.SetActive(false);
 
-        await UniTask.WaitForSeconds(4);
+        await UniTask.WaitForSeconds(5);
 
         Image4.gameObject.SetActive(true);
         Image3.gameObject.SetActive(false);
 
-        await UniTask.WaitForSeconds(3);
+        await UniTask.WaitForSeconds(5);
 
         text0.gameObject.SetActive(true);
         text1.gameObject.SetActive(true);
@@ -69,11 +69,13 @@ public class Goal2Presenter : MonoBehaviour
 
         text0.DOFade(0.0f, 2);
         await text1.DOFade(0.0f, 2).AsyncWaitForCompletion();
-        await UniTask.WaitForSeconds(2);
 
         Image5.gameObject.SetActive(true);
-        await canvasGroup.DOFade(0.0f, 2).AsyncWaitForCompletion();
+        await canvasGroup.DOFade(0.0f, 1).AsyncWaitForCompletion();
+        await UniTask.WaitForSeconds(4);
 
-        await sceneRouter.NavigateToAsync("Scenes/TrekkingLevel2", iScreenTransitionEffect);
+        audioManager.PlayBGM("kewashii-tozandou");
+        ServiceLocator.Instance.Resolve<SceneContext>().Continue = true;
+        await sceneRouter.NavigateToAsync("Scenes/TrekkingLevel1", iScreenTransitionEffect);
     }
 }

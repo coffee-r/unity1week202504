@@ -5,11 +5,7 @@ https://dotween.demigiant.com/pro.php
 # Odin Inspector and Serializer
 Sirenix
 https://odininspector.com/
-
-# Pro Camera 2D
-Luís Pedro Fonseca
-https://www.procamera2d.com/
-
+ 
 # R3
 Cysharp, Inc.
 https://github.com/Cysharp/R3
@@ -18,18 +14,21 @@ https://github.com/Cysharp/R3
 Cysharp, Inc.
 https://github.com/Cysharp/UniTask
 
-# Unityroom Client Library
-naichilab
-https://github.com/naichilab/unityroom-client-library
 
 # NuGetForUnity
 Patrick McCarthy
 https://github.com/GlitchEnzo/NuGetForUnity
 
-# unityroom-tweet
-naichilab
-https://github.com/naichilab/unityroom-tweet
-
 # 鉄瓶ゴシック
 フロップデザインフォント
 https://flopdesign.booth.pm/items/3970314
+
+# 険しい登山道
+hurtrecord.com
+https://www.hurtrecord.com/bgm/84/kewashii-tozandou.html
+
+# 決定ボタンを押す48
+効果音ラボ
+https://soundeffect-lab.info/sound/button/
+
+Dev & Photo By coffee-r

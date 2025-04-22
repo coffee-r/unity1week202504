@@ -1,4 +1,6 @@
 
+using UnityEngine;
+
 [System.Serializable]
 public class CourseData
 {
@@ -9,4 +11,6 @@ public class CourseData
     public int TroubleOccurrencePercent;
     public TerrainType TerrainType;
     public string LocationName;
+    public Sprite SpriteImage;
+    public Vector2 SpriteSize;
 }
